@@ -1,0 +1,4 @@
+const SUPABASE_URL = ''; const SUPABASE_ANON_KEY = '';
+const supabaseClient = window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+async function syncRidesFromSupabase() { if (!supabaseClient) return null; const { data, error } = await supabaseClient.from('rides').select('*').order('booking_date'); if (error) throw error; return data; }
+async function saveRideToSupabase(ride) { if (!supabaseClient) return null; return supabaseClient.from('rides').upsert({ ride_id: ride.id, booking_date: ride.date, booking_time: ride.time, pickup_location: ride.pickup, drop_location: ride.drop, customer_id: ride.customerId, driver_id: ride.driverId, distance_km: ride.distance, fare: ride.fare, payment_method: ride.payment, ride_status: ride.status }); }

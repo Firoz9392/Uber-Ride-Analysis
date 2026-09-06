@@ -1,0 +1,1 @@
+.map-surface{--heat-intensity:.5}.map-surface::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle at 30% 40%,rgba(237,118,95,calc(var(--heat-intensity) * .28)),transparent 25%),radial-gradient(circle at 72% 62%,rgba(229,166,59,calc(var(--heat-intensity) * .2)),transparent 24%)}
